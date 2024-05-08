@@ -1,8 +1,9 @@
 
 import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-const Navlist = ({navLinks}) => {
+const Navlist = ({navLinks,setOpen}) => {
   return (
     <Box sx={{ width: 250}}>
       <nav>
@@ -10,7 +11,7 @@ const Navlist = ({navLinks}) => {
           {
             navLinks.map(item =>(
               <ListItem disablePadding key={item.title}>
-               <ListItemButton component="a" href={item.path}>
+               <ListItemButton component={NavLink} to={item.path} onClick={()=> setOpen(false)}>
               <ListItemIcon> {item.icon}</ListItemIcon>
               <ListItemText>{item.title}</ListItemText>
               </ListItemButton>
